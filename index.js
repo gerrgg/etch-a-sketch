@@ -4,17 +4,28 @@ import { getRandomColor } from './rainbow.js';
 document.addEventListener("DOMContentLoaded", function() {
     const root = document.querySelector('#grid-wrapper');
     const clearButton = document.querySelector('#clear-button');
-    const select = document.querySelector('#size-options');
-    let cells;
+    const selectSize = document.querySelector('#size-options');
     const sizeOptions = Array.from({ length: 12 }, (_, i) => i > 5 ? (i*i) : false).filter(Boolean);
-    let gridSize = sizeOptions[0];
+    const selectCrazy  = document.querySelector('#crazy-options');
+    const crazyOptions = [10, 20, 40, 75, 100]
 
-    function setSizeOptions(){
+    let cells;
+    let gridSize = sizeOptions[0];
+    let crazy = crazyOptions[1];
+
+    function setOptions(){
         sizeOptions.forEach(size => {
             const option = document.createElement("option");
             option.value = size;
             option.text = size;
-            select.appendChild(option)
+            selectSize.appendChild(option)
+        })
+
+        crazyOptions.forEach(size => {
+            const option = document.createElement("option");
+            option.value = size;
+            option.text = size;
+            selectCrazy.appendChild(option)
         })
     }
 
@@ -43,32 +54,34 @@ document.addEventListener("DOMContentLoaded", function() {
         const cell = e.target;
 
         const attributes = {
-            background: getRandomColor(),
-            borderColor: getRandomColor()
+            background: getRandomColor(crazy),
         }
 
         Object.keys(attributes).forEach(key => {
             cell.style[key] = attributes[key];
         });
 
-        console.log(attributes)
     }
 
     function clearGrid(){
         root.innerHTML = ""
     }
 
-    select.addEventListener('change', function(){
-        gridSize = select.value;
+    selectSize.addEventListener('change', function(){
+        gridSize = selectSize.value;
         createGrid();
     })
 
-    clearButton.addEventListener('change', function(){
+    selectCrazy.addEventListener('change', function(){
+        crazy = selectCrazy.value;
+    })
+
+    clearButton.addEventListener('click', function(){
         createGrid();
     })
 
     if( ! root ) return;
-    setSizeOptions();
+    setOptions();
     createGrid();
   });
   

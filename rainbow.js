@@ -3,7 +3,7 @@
 let lastColor = null; // Variable to store the last color
 
 // Function to generate a random color
-export function getRandomColor() {
+export function getRandomColor(crazy) {
   let color;
 
   // Generate a non-red color
@@ -13,7 +13,7 @@ export function getRandomColor() {
 
   // If lastColor is set, slightly alter the current color
   if (lastColor) {
-    color = slightlyAlterColor(lastColor);
+    color = slightlyAlterColor(lastColor, crazy);
   }
 
   lastColor = color; // Save the current color for the next iteration
@@ -37,11 +37,10 @@ function hexToRgb(hex) {
 }
 
 // Function to slightly alter the last color
-function slightlyAlterColor(color) {
+function slightlyAlterColor(color, variation) {
   const rgb = hexToRgb(color);
   
   // Slightly adjust RGB values
-  const variation = 40; // Adjust this value for more or less variation
   const newColor = {
     r: Math.min(Math.max(rgb.r + getRandomVariation(variation), 0), 255),
     g: Math.min(Math.max(rgb.g + getRandomVariation(variation), 0), 255),
