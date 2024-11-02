@@ -27,7 +27,7 @@ main{
 
 #grid-wrapper{
     display: grid;
-    gap: 10px; /* Space between grid items */
+    gap: 5px; /* Space between grid items */
 }
 
 .form-group{
