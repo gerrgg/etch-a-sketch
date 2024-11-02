@@ -1,0 +1,65 @@
+/* Basic CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Ensures padding and border don't affect element size */
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: sans-serif; /* Set a default font */
+  line-height: 1.5; /* Set a comfortable line-height */
+}
+
+body {
+  color: #333; /* Default text color */
+  background-color: #fff; /* Default background color */
+  -webkit-font-smoothing: antialiased; /* Improves font rendering on some devices */
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%; /* Makes media elements responsive */
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit; /* Use the same font as body text */
+  background: none; /* Removes background on form elements */
+  border: none; /* Removes borders on form elements */
+  color: inherit; /* Ensures consistent color */
+}
+
+a {
+  color: inherit; /* Remove default link color */
+  text-decoration: none; /* Remove underline */
+}
+
+ul,
+ol {
+  list-style: none; /* Remove bullets/numbers */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* Remove gaps between table cells */
+}
+
+/* Additional resets for smooth scroll behavior and consistent outline */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+:focus {
+  outline: 2px dashed #0056b3; /* Customize for accessibility */
+  outline-offset: 2px;
+}
